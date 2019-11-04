@@ -2,6 +2,7 @@ package br.com.caelum.course.fj27.dto.output;
 
 import br.com.caelum.course.fj27.domain.Topic;
 import br.com.caelum.course.fj27.domain.TopicStatus;
+import org.springframework.data.domain.Page;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -73,7 +74,7 @@ public class TopicBriefOutputDTO {
         return solved;
     }
 
-    public static List<TopicBriefOutputDTO> listFromTopics(List<Topic> topics) {
-        return topics.stream().map(TopicBriefOutputDTO::new).collect(Collectors.toList());
+    public static Page<TopicBriefOutputDTO> listFromTopics(Page<Topic> topics) {
+        return topics.map(TopicBriefOutputDTO::new);
     }
 }
