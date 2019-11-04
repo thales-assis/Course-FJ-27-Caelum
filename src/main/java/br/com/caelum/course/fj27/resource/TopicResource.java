@@ -4,6 +4,7 @@ import br.com.caelum.course.fj27.domain.Category;
 import br.com.caelum.course.fj27.domain.Course;
 import br.com.caelum.course.fj27.domain.Topic;
 import br.com.caelum.course.fj27.domain.User;
+import br.com.caelum.course.fj27.dto.output.TopicBriefOutputDTO;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import java.util.List;
 public class TopicResource {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Topic> findAll() {
+    public List<TopicBriefOutputDTO> findAll() {
 
         Category subcategory = new Category("Java", new Category("Programação"));
         Course course = new Course("Java e JSF", subcategory);
@@ -33,7 +34,7 @@ public class TopicResource {
 
         List<Topic> list = List.of(topic, topic2);
 
-        return list;
+        return TopicBriefOutputDTO.listFromTopics(list);
     }
 
 }
