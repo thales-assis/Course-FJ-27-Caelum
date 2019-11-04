@@ -3,6 +3,7 @@ package br.com.caelum.course.fj27.service;
 import br.com.caelum.course.fj27.domain.Topic;
 import br.com.caelum.course.fj27.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +14,8 @@ public class TopicService {
     @Autowired
     private TopicRepository topicRepository;
 
-    public List<Topic> findAll() {
-        return topicRepository.findAll();
+    public List<Topic> findAll(Specification specification) {
+        return topicRepository.findAll(specification);
     }
 
 }
